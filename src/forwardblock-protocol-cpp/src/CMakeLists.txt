@@ -20,3 +20,9 @@ add_executable(main main.cpp protocolconstants.h config.h config.cpp  ${Utils} v
             ${KEYPAIR} ${EXCEPTIONS}  ${TRANSACTION} abstractprotocolchain.h abstractprotocolchain.cpp ${BLOCK})
 target_link_libraries(main PUBLIC CRYPTO spdlog secp256k1-cxx data_types_v0_0_0 )
 target_compile_features(main PRIVATE cxx_std_17)
+
+
+add_library(protocol main.cpp protocolconstants.h config.h config.cpp  ${Utils} validator.h validator.cpp ${Base58} ${ACCOUNTS}
+        ${KEYPAIR} ${EXCEPTIONS}  ${TRANSACTION} abstractprotocolchain.h abstractprotocolchain.cpp ${BLOCK})
+target_link_libraries(protocol PUBLIC CRYPTO spdlog secp256k1-cxx data_types_v0_0_0 )
+target_compile_features(protocol PRIVATE cxx_std_17)
