@@ -1,0 +1,6 @@
+add_subdirectory(bip39)
+add_subdirectory(bip32)
+file(GLOB crypto_headers ${CMAKE_CURRENT_LIST_DIR}/*.h)
+file(GLOB crypto_sources ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
+add_library(CRYPTO STATIC ${crypto_headers} ${crypto_sources})
+target_link_libraries(CRYPTO PUBLIC bip39-cxx bip32-cxx secp256k1-cxx )
